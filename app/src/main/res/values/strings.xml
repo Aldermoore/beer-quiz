@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Quizzen</string>
+    <string name="start">Start</string>
+    <string name="welcomeMessage">Den store quiz om alkohol</string>
+    <string name="correctMessage">Rigtigt!</string>
+    <string name="nextButton">Næste</string>
+    <string name="exitButton">Afslut</string>
+    <string name="wrongMessage">Forkert</string>
+    <string name="FinishMessage">Tillykke, du har gennemført quizzen!</string>
+    <string name="progressLabel">Spørgsmål nr.:</string>
+
+</resources>
