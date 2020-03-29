@@ -43,7 +43,9 @@ public class StartFragment extends Fragment {
         buttonToQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_startFragment_to_quizFragment);
+                try {
+                    Navigation.findNavController(view).navigate(R.id.action_startFragment_to_quizFragment);
+                } catch (Exception e) {System.out.println(e);};
             }
         });
 

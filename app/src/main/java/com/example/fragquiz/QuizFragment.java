@@ -17,7 +17,8 @@ import java.util.Objects;
 
 public class QuizFragment extends Fragment {
 
-    private Game game = new Game();
+    private Game game;
+    private SQLiteHelper db = new SQLiteHelper(getContext());
     private Question currentQuestion;
     private Button answerOne;
     private Button answerTwo;
@@ -35,7 +36,7 @@ public class QuizFragment extends Fragment {
     private int correctAnswerIndex;
 
     public QuizFragment() {
-
+        game = new Game(db);
     }
 
     @Override

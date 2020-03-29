@@ -1,10 +1,50 @@
 package com.example.fragquiz;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.IntentSender;
+import android.content.ServiceConnection;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.database.DatabaseErrorHandler;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.UserHandle;
+import android.view.ContextMenu;
+import android.view.ContextThemeWrapper;
+import android.view.Display;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Game {
 
+public class Game {
+    private SQLiteHelper db;
     private Question currentQuestion;
     private String question;
     private int progress;
@@ -85,7 +125,10 @@ public class Game {
 
 
 
-    public Game() {
+
+
+    public Game(SQLiteHelper db) {
+        this.db = db;
     }
 
     public void setQuestions() {
@@ -214,6 +257,7 @@ public class Game {
     }
 
     public Question getNewQuestion(int questionTier) {
+
         Random random = new Random();
         Question newQuestion;
         ArrayList<Question> availableQuestions = new ArrayList<>();
@@ -224,5 +268,8 @@ public class Game {
         }
         newQuestion = availableQuestions.get(new Random().nextInt(availableQuestions.size()));
         return newQuestion;
+
+
+        // return db.getOneQuestionOfDifficulty(questionTier);
     }
 }
