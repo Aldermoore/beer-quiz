@@ -1,50 +1,15 @@
 package com.example.fragquiz;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
-import android.content.ContentResolver;
+
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.IntentSender;
-import android.content.ServiceConnection;
-import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.UserHandle;
-import android.view.ContextMenu;
-import android.view.ContextThemeWrapper;
-import android.view.Display;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
 
 public class Game {
-    private SQLiteHelper db;
+    private MyDB db;
     private Question currentQuestion;
     private String question;
     private int progress;
@@ -53,8 +18,10 @@ public class Game {
     private String answerThree;
     private String answerFour;
     private int correctAnswerIndex;
+    private Context context;
 
 
+/*
     private ArrayList<Question> questions = new ArrayList<>();
     private Question question1 = new Question("Hvad er verdensrekorden for at drikke 1 liter øl?", "0,9 sekunder", "1,3 sekunder", "1,8 sekunder", "2,2 sekunder", 2, 4);
     private Question question2 = new Question("hvad er det officielle videnskabelige navn for ølstudier og ølvidenskab?", "Zythologi", "Ønologi", "Vicimetri", "Mycologi", 1, 5);
@@ -122,15 +89,18 @@ public class Game {
     private Question question64 = new Question("Hvilken kemiker udformede i 1909 PH-skalaen, der i dag er central inden for syre-base kemi?","Sophus Mads Jørgensen","Alfred Werner","Gilbert N. Lewis","Søren Peter Lauritz Sørensen", 4, 4);
     private Question question65 = new Question("Sloganet 'Probably the best beer in the world' blev lanceret i 1973. Hvilket ølmærke har dette slogan?","Carlsberg","Tuborg","Heineken","Grimbergen", 1, 1);
     private Question question66 = new Question("Elefantporten er inspireret af den obeliskbærende elefant fra Piazza della Minerva i Rom, og har også lagt navn til elefantøllet. Hvornår er elefantøllet fra?","1955","1966","1977","1988", 1,3);
+*/
 
 
 
 
+    public Game(Context context) {
+        this.context = context;
+        // db = new MyDB(context);
 
-    public Game(SQLiteHelper db) {
-        this.db = db;
     }
 
+/*
     public void setQuestions() {
         questions.add(question1);
         questions.add(question2);
@@ -205,10 +175,16 @@ public class Game {
 
 
     }
+*/
+
+/*
+
 
     public ArrayList<Question> getQuestions() {
         return questions;
     }
+
+ */
 
     public Question getCurrentQuestion() {
         return currentQuestion;
@@ -230,10 +206,12 @@ public class Game {
         return answerFour;
     }
 
+    public int getCurrentTier() {return currentQuestion.getTier(); }
 
 
+/*
     public void nextQuestion () {
-        currentQuestion = getNewQuestion(currentQuestion.getTier() + 1);
+        currentQuestion = getNewQuestion(getCurrentTier() + 1);
         answerOne = currentQuestion.getAnswerOne();
         answerTwo = currentQuestion.getAnswerTwo();
         answerThree = currentQuestion.getAnswerThree();
@@ -243,7 +221,9 @@ public class Game {
         correctAnswerIndex = currentQuestion.getCorrectAnswerIndex();
     }
 
+ */
 
+/*
     public void restartQuiz () {
         currentQuestion = getNewQuestion(1);
         answerOne = currentQuestion.getAnswerOne();
@@ -253,9 +233,10 @@ public class Game {
         question = currentQuestion.getQuestion();
         progress = currentQuestion.getTier();
         correctAnswerIndex = currentQuestion.getCorrectAnswerIndex();
-
     }
 
+ */
+/*
     public Question getNewQuestion(int questionTier) {
 
         Random random = new Random();
@@ -268,8 +249,33 @@ public class Game {
         }
         newQuestion = availableQuestions.get(new Random().nextInt(availableQuestions.size()));
         return newQuestion;
-
-
         // return db.getOneQuestionOfDifficulty(questionTier);
+    }
+
+ */
+
+/*
+    public void setNewQuestion(int tier) {
+        currentQuestion = getNewQuestion(tier);
+        answerOne = currentQuestion.getAnswerOne();
+        answerTwo = currentQuestion.getAnswerTwo();
+        answerThree = currentQuestion.getAnswerThree();
+        answerFour = currentQuestion.getAnswerFour();
+        question = currentQuestion.getQuestion();
+        progress = currentQuestion.getTier();
+        correctAnswerIndex = currentQuestion.getCorrectAnswerIndex();
+    }
+
+ */
+
+    public void setQuestion(Question questionObject) {
+        currentQuestion = questionObject;
+        answerOne = currentQuestion.getAnswerOne();
+        answerTwo = currentQuestion.getAnswerTwo();
+        answerThree = currentQuestion.getAnswerThree();
+        answerFour = currentQuestion.getAnswerFour();
+        question = currentQuestion.getQuestion();
+        progress = currentQuestion.getTier();
+        correctAnswerIndex = currentQuestion.getCorrectAnswerIndex();
     }
 }

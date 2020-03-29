@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "alcoholdb.db";
+    private static final int DATABASE_VERSION = 1;
+
     private static final String TABLE_NAME = "AlcoholQestions";
     private static final String QUESTION_COLUMN = "Question";
     private static final String ANSWER_ONE_COLUMN = "Answer1";
@@ -22,7 +24,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
     public SQLiteHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.mContext = context;
     }
 
@@ -46,29 +48,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public Question getOneQuestionOfDifficulty(int difficulty) {
-        // SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery( "SELECT * FROM AlcoholQestions WHERE DifficultyTier ="+difficulty+" ORDER BY random() LIMIT 1", null );
-        String question = res.getString(0);
-        String answer1 = res.getString(1);
-        String answer2 = res.getString(2);
-        String answer3 = res.getString(3);
-        String answer4 = res.getString(4);
-        String correctAnswer = res.getString(5);
-        String difficultyTier = res.getString(6);
-
-        System.out.println(question);
-        System.out.println(answer1);
-        System.out.println(answer2);
-        System.out.println(answer3);
-        System.out.println(answer4);
-        System.out.println(correctAnswer);
-        System.out.println(difficultyTier);
-        Question questionToReturn = new Question(res.getString(0), res.getString(1),res.getString(2), res.getString(3), res.getString(4), res.getInt(5), res.getInt(6));
-        return questionToReturn;
-    }
-
-    public void open() {
-        db = getReadableDatabase();
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
     }
 }

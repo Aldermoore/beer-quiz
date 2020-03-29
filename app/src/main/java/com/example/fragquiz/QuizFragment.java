@@ -17,8 +17,10 @@ import java.util.Objects;
 
 public class QuizFragment extends Fragment {
 
-    private Game game;
-    private SQLiteHelper db = new SQLiteHelper(getContext());
+
+    private SQLiteHelper dbHelper = new SQLiteHelper(getContext());
+    // private MyDB myDB = new MyDB(getContext());
+    private Game game = new Game(getContext());
     private Question currentQuestion;
     private Button answerOne;
     private Button answerTwo;
@@ -34,10 +36,7 @@ public class QuizFragment extends Fragment {
     private String answerThreeLabel;
     private String answerFourLabel;
     private int correctAnswerIndex;
-
-    public QuizFragment() {
-        game = new Game(db);
-    }
+    private int currentTier;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,8 +47,10 @@ public class QuizFragment extends Fragment {
 
         }
 
-        game.setQuestions();
-        game.restartQuiz();
+        // game.setQuestions();
+        // game.restartQuiz();
+        // game.setNewQuestion(1);
+        selectQuestionOfTier(1);
         currentQuestion = game.getCurrentQuestion();
     }
 
@@ -146,24 +147,33 @@ public class QuizFragment extends Fragment {
         }
     }
     private void correctAnswer(@NonNull View view) {
-        game.nextQuestion();
+        // game.nextQuestion();
+        selectQuestionOfTier(currentTier + 1);
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_answerFragment);
     }
 
     private void wrongAnswer(@NonNull View view) {
-        game.restartQuiz();
+        // game.restartQuiz();
+        selectQuestionOfTier(1);
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_wrongAnswerFragment);
     }
 
     private void finishQuiz(@NonNull View view) {
-        game.restartQuiz();
+        // game.restartQuiz();
+        selectQuestionOfTier(1);
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_finishFragment);
+    }
+
+    private void selectQuestionOfTier(int tier) {
+        currentTier = tier;
+        Question questionToSelect = ((MainActivity) getActivity()).getNextQuestion(tier);
+        game.setQuestion(questionToSelect);
     }
 
     private void updateQuestion() {
@@ -220,5 +230,6 @@ public class QuizFragment extends Fragment {
         answerFourLabel = savedInstanceState.getString("answerFour");
         correctAnswerIndex = savedInstanceState.getInt("correctAnswerIndex");
     }
+
 
 }
