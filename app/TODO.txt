@@ -1,3 +1,10 @@
+Next up:
+[] Set ~current commit as version 1, with tag etc.
+[] create dev branch for experimental features
+[] Create README on gitlab 
+
+
+Backlog:
 [] Unit tests for all classes (if applicable)
     [] Game
     [] MainActivity
@@ -21,7 +28,7 @@
 
 [] refactor so that game is the central component of the system
     [] Compositional design?
-        [] Game interface that can implement different ways to retrieve the next question? 
+        [] Game interface that can implement different ways to retrieve the next question?
     [] QuizFragment should no do anything itself, but always ask the Game Object for this
 
 [] Graphics / Artwork
@@ -29,3 +36,12 @@
     [] Wrong answer graphics
     [] Correct answer graphics
     [] Completion Graphics
+    [] Artwork as backgrounds during questions
+    [] New button styles?
+
+[] Implement statistics
+    [] Win percent rate for game mode
+    [] Number of questions answered correctly/incorrectly
+    [] Erase stats
+
+Finished:
