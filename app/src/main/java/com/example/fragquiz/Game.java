@@ -207,7 +207,7 @@ public class Game {
 
     /**
      * Returns the second of the four possible answers
-     * @return      String      The string containing the first answer
+     * @return      String      The string containing the second answer
      */
     public String getAnswerTwo() {
         return answerTwo;
@@ -215,7 +215,7 @@ public class Game {
 
     /**
      * Returns the third of the four possible answers
-     * @return      String      The string containing the first answer
+     * @return      String      The string containing the third answer
      */
     public String getAnswerThree() {
         return answerThree;
@@ -223,7 +223,7 @@ public class Game {
 
     /**
      * Returns the fourth of the four possible answers
-     * @return      String      The string containing the first answer
+     * @return      String      The string containing the fourth answer
      */
     public String getAnswerFour() {
         return answerFour;
