@@ -45,4 +45,6 @@ Backlog:
     [] Erase stats
 
 [] Localization ( English UI and english DB )
+
+
 Finished:
