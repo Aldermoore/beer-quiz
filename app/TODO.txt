@@ -1,7 +1,7 @@
 Next up:
-[] Set ~current commit as version 1, with tag etc.
-[] create dev branch for experimental features
-[] Create README on gitlab 
+[X] Set ~current commit as version 1, with tag etc.
+[X] create dev branch for experimental features
+[X] Create README on gitlab
 
 
 Backlog:
