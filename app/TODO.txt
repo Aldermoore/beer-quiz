@@ -44,4 +44,5 @@ Backlog:
     [] Number of questions answered correctly/incorrectly
     [] Erase stats
 
+[] Localization ( English UI and english DB )
 Finished:
