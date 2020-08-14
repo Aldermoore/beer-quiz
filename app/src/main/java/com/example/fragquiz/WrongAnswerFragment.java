@@ -16,7 +16,6 @@ import androidx.navigation.Navigation;
  * It current only contains the a message saying the answer was wrong,
  * and a navigation to the next question
  */
-// TODO: 14/08/20 Add ability to see the correct answer (must be toggled on in the settings panel
 public class WrongAnswerFragment extends Fragment {
 
     public WrongAnswerFragment() {

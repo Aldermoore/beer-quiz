@@ -1,0 +1,31 @@
+[] Unit tests for all classes (if applicable)
+    [] Game
+    [] MainActivity
+    [] AnswerFragment
+    [] FinishFragment
+    [] MyDB
+    [] Question
+    [] QuizFragment
+    [] StartFragment
+    [] WrongAnswerFragment
+[] Integration tests for all integrations (if applicable)
+    [] MainActivity x MyDB
+    [] QuizFragment x Game
+    [] QuizFragment x MainActivity
+[] Add settings panel
+[] see the correct answer when wrong answer is selected (must be toggled on in the settings panel)
+
+[] New GameMode: Run through all questions, with final score at the end
+    [] Game know the number of correct and incorrect answers for the given game
+    [] retrieve an array of all questions ordered by difficulty
+
+[] refactor so that game is the central component of the system
+    [] Compositional design?
+        [] Game interface that can implement different ways to retrieve the next question? 
+    [] QuizFragment should no do anything itself, but always ask the Game Object for this
+
+[] Graphics / Artwork
+    [] Start screen graphics
+    [] Wrong answer graphics
+    [] Correct answer graphics
+    [] Completion Graphics
