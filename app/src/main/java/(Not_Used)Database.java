@@ -3,7 +3,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
+/*
 public class Database {
     private final Context context;
     private SQLiteDatabase database;
@@ -43,3 +43,5 @@ public class Database {
         }
     }
 }
+
+ */

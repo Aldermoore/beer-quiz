@@ -15,7 +15,9 @@ import androidx.navigation.Navigation;
 
 public class StartFragment extends Fragment {
 
-
+    /**
+     * The first fragment, loaded by the MainActivity upon launch.
+     */
     public StartFragment() {
 
     }

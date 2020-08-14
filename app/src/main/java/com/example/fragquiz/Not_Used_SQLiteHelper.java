@@ -4,9 +4,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-
-public class SQLiteHelper extends SQLiteOpenHelper {
+/*
+=============================== THIS FILE IS NOT USED =======================================
+ */
+/**
+ * The SQLite helper class
+ * Contains information about the db file
+ * Connects the the Android SQLiteOpenHelper class for manipulation of SQLite databases
+ *
+ */
+public class Not_Used_SQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "alcoholdb.db";
     private static final int DATABASE_VERSION = 1;
@@ -23,13 +30,16 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private final Context mContext;
     private SQLiteDatabase db;
 
-    public SQLiteHelper(Context context) {
+    public Not_Used_SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.mContext = context;
     }
 
 
-
+    /**
+     * Creates a new database in the correct format in case this does not exist
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" +

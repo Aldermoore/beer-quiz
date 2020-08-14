@@ -11,6 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+/**
+ * This fragment is used when the user has completed the quiz
+ * Has navigation to start over, or return the the start screen
+ */
 public class FinishFragment extends Fragment {
     public FinishFragment() {
 

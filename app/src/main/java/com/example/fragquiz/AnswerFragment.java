@@ -11,6 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+/**
+ * This fragment is used when the correct answer has been selected.
+ * It current only contains the a message saying the answer was correct,
+ * and a navigation to the next question
+ */
 public class AnswerFragment extends Fragment {
 
     public AnswerFragment() {

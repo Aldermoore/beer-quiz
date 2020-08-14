@@ -11,6 +11,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+/**
+ * This fragment is used when the wrong answer has been selected.
+ * It current only contains the a message saying the answer was wrong,
+ * and a navigation to the next question
+ */
+// TODO: 14/08/20 Add ability to see the correct answer (must be toggled on in the settings panel
 public class WrongAnswerFragment extends Fragment {
 
     public WrongAnswerFragment() {

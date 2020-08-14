@@ -18,10 +18,13 @@ import java.util.Objects;
 public class QuizFragment extends Fragment {
 
 
-    private SQLiteHelper dbHelper = new SQLiteHelper(getContext());
+    //private SQLiteHelper dbHelper = new SQLiteHelper(getContext());
     // private MyDB myDB = new MyDB(getContext());
     private Game game = new Game(getContext());
-    private Question currentQuestion;
+
+    /*
+    Variables for the UI elements of the fragments view
+     */
     private Button answerOne;
     private Button answerTwo;
     private Button answerThree;
@@ -29,6 +32,10 @@ public class QuizFragment extends Fragment {
     private TextView questionView;
     private TextView progress;
 
+    /*
+    Variables for the current question of the quiz
+     */
+    private Question currentQuestion;
     private String questionText;
     private String progressLabel;
     private String answerOneLabel;
@@ -146,6 +153,16 @@ public class QuizFragment extends Fragment {
             restoreInstanceState(savedInstanceState);
         }
     }
+
+    /**
+     * Called when the correct answer is selected
+     * Gets a new question of a higher difficulty tier
+     * Inserts this question in the calls variables to be displayed when the user returns to this
+     * fragment
+     * Navigates to the answerFragment which let the user know their answer was correct
+     *
+     * @param view      The fragments view
+     */
     private void correctAnswer(@NonNull View view) {
         // game.nextQuestion();
         selectQuestionOfTier(currentTier + 1);
@@ -154,6 +171,14 @@ public class QuizFragment extends Fragment {
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_answerFragment);
     }
 
+    /**
+     * Called when the wrong answer is selected
+     * Gets a question of tier 1, effectively resetting the quiz
+     * Inserts this question in the calls variables to be displayed when the user returns to this
+     * Returns the user the the start fragment to start over
+     *
+     * @param view      The fragments view
+     */
     private void wrongAnswer(@NonNull View view) {
         // game.restartQuiz();
         selectQuestionOfTier(1);
@@ -162,6 +187,14 @@ public class QuizFragment extends Fragment {
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_wrongAnswerFragment);
     }
 
+    /**
+     * Called when the end of the quiz has been reached
+     * Gets a question of tier 1, effectively resetting the quiz
+     * Inserts this question in the calls variables to be displayed when the user returns to this
+     * Returns the user the the finish fragment to let them know they completed the quiz
+     *
+     * @param view      The fragments view
+     */
     private void finishQuiz(@NonNull View view) {
         // game.restartQuiz();
         selectQuestionOfTier(1);
@@ -170,12 +203,22 @@ public class QuizFragment extends Fragment {
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_finishFragment);
     }
 
+    /**
+     * Gets a question from the DB of the specified tier through the MainActivity
+     * Sets the question of the global Game object
+     *
+     * @param tier      int     The tier of the question to be retrieved. Can be between 1 and 5
+     */
     private void selectQuestionOfTier(int tier) {
         currentTier = tier;
         Question questionToSelect = ((MainActivity) getActivity()).getNextQuestion(tier);
         game.setQuestion(questionToSelect);
     }
 
+    /**
+     * Updates the field variables containing information on the current question
+     * The new information is retrieved from the global Game object.
+     */
     private void updateQuestion() {
         currentQuestion = game.getCurrentQuestion();
         questionText = game.getCurrentQuestion().getQuestion();
@@ -188,6 +231,11 @@ public class QuizFragment extends Fragment {
 
     }
 
+    /**
+     * Updates the display with the latest question contained in the field variables.
+     *
+     * @param view      The view of the fragment
+     */
     private void updateDisplay(@NonNull View view) {
 
         questionView = view.findViewById(R.id.questionTextView);

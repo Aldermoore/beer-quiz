@@ -2,22 +2,24 @@ package com.example.fragquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
 import android.os.Bundle;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
+/**
+ * Main activity for the Quiz app
+ * Sets up the fragments and views
+ */
 public class MainActivity extends AppCompatActivity {
-    private SQLiteHelper db = new SQLiteHelper(this);
-    private MyDB database;
+    // private Not_Used_SQLiteHelper db = new Not_Used_SQLiteHelper(this);
+
+    private MyDB database; // The database handler
     private Context context = this;
 
+    /**
+     * OnCreate set up the database handler sets the view to be the nav host,
+     * displaying the initial fragment
+     * @param savedInstanceState    The saved state if there is any.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +27,20 @@ public class MainActivity extends AppCompatActivity {
         database = new MyDB(this);
     }
 
+    /**
+     * Returns the database handler object
+     * @return  MyDB    The DB handler object
+     */
     public MyDB getDatabase() {
         return database;
     }
 
+    /**
+     * Returns a Question object with the specified difficulty tier
+     * The question is retireved via the database handler
+     * @param tier  int     The difficulty of the question. Can be [1-5]
+     * @return  Question    A question object with the specified difficulty tier.
+     */
     public Question getNextQuestion(int tier) {
         return database.getOneQuestionOfDifficulty(tier);
     }
