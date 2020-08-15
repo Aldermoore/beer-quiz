@@ -1,4 +1,6 @@
-package com.example.fragquiz;
+package com.example.fragquiz.framework;
+
+import com.example.fragquiz.QuestionImpl;
 
 /**
  * The NextQuestionStrategy
@@ -9,5 +11,5 @@ public interface NextQuestionStrategy {
      * Returns the next question for the game
      * @return Question     The next Question object in the game
      */
-    public Question fetchNextQuestion();
+    public QuestionImpl fetchNextQuestion(QuestionInterface currentQuestion);
 }

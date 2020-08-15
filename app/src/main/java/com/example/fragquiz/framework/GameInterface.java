@@ -1,4 +1,7 @@
-package com.example.fragquiz;
+package com.example.fragquiz.framework;
+
+import com.example.fragquiz.Question;
+import com.example.fragquiz.QuestionImpl;
 
 /**
  * The Game interface
@@ -11,10 +14,15 @@ public interface GameInterface {
      * Returns the current question stored in the object
      * @return      Question    The current question
      */
-    public Question getCurrentQuestion();
+    public QuestionImpl getCurrentQuestion();
 
     /**
      * Sets the game objects question variable to the next question
      */
     public void setNextQuestion();
+
+    /**
+     * Clears the current question so that the game will restart.
+     */
+    public void restartQuiz();
 }

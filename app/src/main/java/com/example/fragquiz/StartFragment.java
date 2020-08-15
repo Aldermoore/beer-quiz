@@ -1,6 +1,7 @@
 package com.example.fragquiz;
 
-import android.net.Uri;
+import android.content.Context;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
 
+
 public class StartFragment extends Fragment {
 
+    private Context context = this.getContext();
     /**
      * The first fragment, loaded by the MainActivity upon launch.
      */
     public StartFragment() {
-
     }
 
     @Override
@@ -45,6 +47,7 @@ public class StartFragment extends Fragment {
         buttonToQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((MainActivity) getActivity()).startGame(((MainActivity) ((MainActivity) getActivity()).getContext()));
                 try {
                     Navigation.findNavController(view).navigate(R.id.action_startFragment_to_quizFragment);
                 } catch (Exception e) {System.out.println(e);};

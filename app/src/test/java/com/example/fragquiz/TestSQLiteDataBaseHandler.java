@@ -1,18 +1,18 @@
 package com.example.fragquiz;
 
+import android.database.Cursor;
+
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 
-/**
- * NOT NEEDED; SINCE QUESTION IS ALL GETTERS!
- */
-public class TestQuestion {
-    StubQuestion question = new StubQuestion();
+public class TestSQLiteDataBaseHandler {
+    private SQLiteDatabaseHandler dbHandler;
 
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -27,6 +27,9 @@ public class TestQuestion {
         System.setOut(originalOut);
     }
 
-
-
+    @Test
+    public void shouldReturnRawQuery() {
+        // Cursor results = dbHandler.DatabaseQuery("SELECT * FROM AlcoholQestions ORDER BY random() LIMIT 1");
+        // assertThat(results, is(not(nullValue())));
+    }
 }

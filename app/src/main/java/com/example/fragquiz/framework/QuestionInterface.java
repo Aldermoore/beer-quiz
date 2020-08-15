@@ -1,10 +1,15 @@
-package com.example.fragquiz;
+package com.example.fragquiz.framework;
 
 /**
  * The Question Interface outlines the main data objects in the game
  * Contains methods for accessing every variable of the object.
  */
 public interface QuestionInterface {
+    /**
+     * Returns the question text as a string
+     * @return  String      The question text
+     */
+    public String getQuestion();
 
     /**
      * Returns the correct answer index

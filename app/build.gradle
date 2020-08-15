@@ -30,3 +30,12 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
 }
+
+configurations.all {
+    resolutionStrategy {
+        force 'org.hamcrest:hamcrest-junit:2.0.0.0'
+    }
+}
+
+configurations {
+    compile.exclude group: "junit", module: "junit"}

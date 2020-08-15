@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.fragquiz.framework.GameInterface;
+
 import java.util.Objects;
 
 public class QuizFragment extends Fragment {
@@ -20,7 +22,6 @@ public class QuizFragment extends Fragment {
 
     //private SQLiteHelper dbHelper = new SQLiteHelper(getContext());
     // private MyDB myDB = new MyDB(getContext());
-    private Game game = new Game(getContext());
 
     /*
     Variables for the UI elements of the fragments view
@@ -35,7 +36,7 @@ public class QuizFragment extends Fragment {
     /*
     Variables for the current question of the quiz
      */
-    private Question currentQuestion;
+    private QuestionImpl currentQuestion;
     private String questionText;
     private String progressLabel;
     private String answerOneLabel;
@@ -44,6 +45,15 @@ public class QuizFragment extends Fragment {
     private String answerFourLabel;
     private int correctAnswerIndex;
     private int currentTier;
+
+
+
+
+
+    public GameInterface getGame() {
+        return ((MainActivity) getActivity()).getGame();
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,8 +67,7 @@ public class QuizFragment extends Fragment {
         // game.setQuestions();
         // game.restartQuiz();
         // game.setNewQuestion(1);
-        selectQuestionOfTier(1);
-        currentQuestion = game.getCurrentQuestion();
+        currentQuestion = getGame().getCurrentQuestion();
     }
 
     @Override
@@ -165,7 +174,7 @@ public class QuizFragment extends Fragment {
      */
     private void correctAnswer(@NonNull View view) {
         // game.nextQuestion();
-        selectQuestionOfTier(currentTier + 1);
+        nextQuestion();
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_answerFragment);
@@ -181,7 +190,7 @@ public class QuizFragment extends Fragment {
      */
     private void wrongAnswer(@NonNull View view) {
         // game.restartQuiz();
-        selectQuestionOfTier(1);
+        nextQuestion();
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_wrongAnswerFragment);
@@ -197,22 +206,23 @@ public class QuizFragment extends Fragment {
      */
     private void finishQuiz(@NonNull View view) {
         // game.restartQuiz();
-        selectQuestionOfTier(1);
+        getGame().restartQuiz();
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_finishFragment);
     }
 
-    /**
-     * Gets a question from the DB of the specified tier through the MainActivity
-     * Sets the question of the global Game object
-     *
-     * @param tier      int     The tier of the question to be retrieved. Can be between 1 and 5
-     */
+    /*
     private void selectQuestionOfTier(int tier) {
         currentTier = tier;
         Question questionToSelect = ((MainActivity) getActivity()).getNextQuestion(tier);
-        game.setQuestion(questionToSelect);
+        getGame().setNextQuestion();
+    }
+
+     */
+
+    public void nextQuestion() {
+        getGame().setNextQuestion();
     }
 
     /**
@@ -220,14 +230,14 @@ public class QuizFragment extends Fragment {
      * The new information is retrieved from the global Game object.
      */
     private void updateQuestion() {
-        currentQuestion = game.getCurrentQuestion();
-        questionText = game.getCurrentQuestion().getQuestion();
-        answerOneLabel = game.getAnswerOne();
-        answerTwoLabel = game.getAnswerTwo();
-        answerThreeLabel = game.getAnswerThree();
-        answerFourLabel = game.getAnswerFour();
+        currentQuestion = getGame().getCurrentQuestion();
+        questionText = getGame().getCurrentQuestion().getQuestion();
+        answerOneLabel = getGame().getCurrentQuestion().getAnswerOne();
+        answerTwoLabel = getGame().getCurrentQuestion().getAnswerTwo();
+        answerThreeLabel = getGame().getCurrentQuestion().getAnswerThree();
+        answerFourLabel = getGame().getCurrentQuestion().getAnswerFour();
         progressLabel = ("Question nr.: " + currentQuestion.getTier());
-        correctAnswerIndex = game.getCurrentQuestion().getCorrectAnswerIndex();
+        correctAnswerIndex = getGame().getCurrentQuestion().getCorrectAnswerIndex();
 
     }
 

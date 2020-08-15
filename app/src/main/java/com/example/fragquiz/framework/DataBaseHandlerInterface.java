@@ -1,13 +1,13 @@
-package com.example.fragquiz;
+package com.example.fragquiz.framework;
 
 import android.database.Cursor;
 
 /**
  * The DataBaseHandler interface
  * Connects to a database of questions
- * Contains functions for setting up the connection to the database and for querying
+ * Contains functions for setting up the connection to the database and for raw querying
  */
-public interface DataBaseHandler {
+public interface DataBaseHandlerInterface {
     /**
      * This method should set up the connection to the database and open it up.
      * Once the method returns, the database should be ready to be queried
