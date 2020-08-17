@@ -45,9 +45,6 @@ public class QuizFragment extends Fragment {
     private String answerFourLabel;
 
 
-
-
-
     public GameInterface getGame() {
         return ((MainActivity) getActivity()).getGame();
     }
@@ -88,6 +85,18 @@ public class QuizFragment extends Fragment {
         answerOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(currentQuestion.getCorrectAnswerIndex() == 1) {
+                    nextQuestion();
+                    updateQuestion();
+                    if (currentQuestion == null) {
+                        finishQuiz(view);
+                    } else {
+                        correctAnswer(view);
+                    }
+                } else {
+                    wrongAnswer(view);
+                }
+                /*
                 if (currentQuestion.getCorrectAnswerIndex() == 1 && currentQuestion.getTier() == 5) {
                     finishQuiz(view);
                 } else if (currentQuestion.getCorrectAnswerIndex() == 1) {
@@ -95,6 +104,8 @@ public class QuizFragment extends Fragment {
                 } else {
                     wrongAnswer(view);
                 }
+
+                 */
             }
         });
 
@@ -102,6 +113,19 @@ public class QuizFragment extends Fragment {
         answerTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(currentQuestion.getCorrectAnswerIndex() == 2) {
+                    nextQuestion();
+                    updateQuestion();
+                    if (currentQuestion == null) {
+                        finishQuiz(view);
+                    } else {
+                        correctAnswer(view);
+                    }
+                } else {
+                    wrongAnswer(view);
+                }
+
+                /*
                 if (currentQuestion.getCorrectAnswerIndex() == 2 && currentQuestion.getTier() == 5) {
                     finishQuiz(view);
                 } else if (currentQuestion.getCorrectAnswerIndex() == 2) {
@@ -109,6 +133,8 @@ public class QuizFragment extends Fragment {
                 } else {
                     wrongAnswer(view);
                 }
+
+                 */
             }
         });
 
@@ -116,6 +142,18 @@ public class QuizFragment extends Fragment {
         answerThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(currentQuestion.getCorrectAnswerIndex() == 3) {
+                    nextQuestion();
+                    updateQuestion();
+                    if (currentQuestion == null) {
+                        finishQuiz(view);
+                    } else {
+                        correctAnswer(view);
+                    }
+                } else {
+                    wrongAnswer(view);
+                }
+                /*
                 if (currentQuestion.getCorrectAnswerIndex() == 3 && currentQuestion.getTier() == 5) {
                     finishQuiz(view);
                 } else if (currentQuestion.getCorrectAnswerIndex() == 3) {
@@ -123,6 +161,8 @@ public class QuizFragment extends Fragment {
                 } else {
                     wrongAnswer(view);
                 }
+
+                 */
             }
         });
 
@@ -130,6 +170,18 @@ public class QuizFragment extends Fragment {
         answerFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(currentQuestion.getCorrectAnswerIndex() == 4) {
+                    nextQuestion();
+                    updateQuestion();
+                    if (currentQuestion == null) {
+                        finishQuiz(view);
+                    } else {
+                        correctAnswer(view);
+                    }
+                } else {
+                    wrongAnswer(view);
+                }
+                /*
                 if (currentQuestion.getCorrectAnswerIndex() == 4 && currentQuestion.getTier() == 5) {
                     finishQuiz(view);
                 } else if (currentQuestion.getCorrectAnswerIndex() == 4) {
@@ -137,6 +189,8 @@ public class QuizFragment extends Fragment {
                 } else {
                     wrongAnswer(view);
                 }
+
+                 */
             }
         });
 
@@ -167,7 +221,7 @@ public class QuizFragment extends Fragment {
      * @param view      The fragments view
      */
     private void correctAnswer(@NonNull View view) {
-        nextQuestion();
+        // nextQuestion();
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_answerFragment);
@@ -182,7 +236,7 @@ public class QuizFragment extends Fragment {
      * @param view      The fragments view
      */
     private void wrongAnswer(@NonNull View view) {
-        nextQuestion();
+        // nextQuestion();
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_wrongAnswerFragment);
@@ -212,13 +266,17 @@ public class QuizFragment extends Fragment {
      * The new information is retrieved from the global Game object.
      */
     private void updateQuestion() {
-        currentQuestion = getGame().getCurrentQuestion();
-        questionText = getGame().getCurrentQuestion().getQuestion();
-        answerOneLabel = getGame().getCurrentQuestion().getAnswerOne();
-        answerTwoLabel = getGame().getCurrentQuestion().getAnswerTwo();
-        answerThreeLabel = getGame().getCurrentQuestion().getAnswerThree();
-        answerFourLabel = getGame().getCurrentQuestion().getAnswerFour();
-        progressLabel = ("Question nr.: " + currentQuestion.getTier());
+        try {
+            currentQuestion = getGame().getCurrentQuestion();
+            questionText = getGame().getCurrentQuestion().getQuestion();
+            answerOneLabel = getGame().getCurrentQuestion().getAnswerOne();
+            answerTwoLabel = getGame().getCurrentQuestion().getAnswerTwo();
+            answerThreeLabel = getGame().getCurrentQuestion().getAnswerThree();
+            answerFourLabel = getGame().getCurrentQuestion().getAnswerFour();
+            progressLabel = ("Question nr.: " + currentQuestion.getTier());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }
 

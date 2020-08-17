@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startGame(Context context) {
-        game = new GameImpl(new SQLite_TierPlusOneNextQStrat(new SQLiteDatabaseHandler(context)));
+        game = new GameImpl(new SQLite_TierPlusOneNextQStrat(new SQLiteDatabaseHandler(context))); // Default game style
+        // game = new GameImpl(new SQLite_25QuestionsNextQStrat(new SQLiteDatabaseHandler(context))); // 25 questions (not fully implemented yet)
     }
 }

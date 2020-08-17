@@ -1,6 +1,7 @@
 package com.example.fragquiz;
 
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 
 import com.example.fragquiz.framework.NextQuestionStrategy;
 import com.example.fragquiz.framework.QuestionInterface;
@@ -26,7 +27,8 @@ public class SQLite_TierPlusOneNextQStrat implements NextQuestionStrategy {
     }
 
     /**
-     * Fetches a single question.
+     * Fetches a single random question with a tier of 1 higher than the input.
+     * If the input is null, the fetched questions tier is 1.
      * @return
      */
     @Override
@@ -45,14 +47,19 @@ public class SQLite_TierPlusOneNextQStrat implements NextQuestionStrategy {
         res.moveToNext(); // Moves to the next entry, since the cursor starts at index -1 :-/
         // Inserts the values from the cursor into a new QuestionImpl object
         if (res != null) {
-            questionToReturn = new QuestionImpl(
-                    res.getString(res.getColumnIndex(QUESTION_COLUMN)),
-                    res.getString(res.getColumnIndex(ANSWER_ONE_COLUMN)),
-                    res.getString(res.getColumnIndex(ANSWER_TWO_COLUMN)),
-                    res.getString(res.getColumnIndex(ANSWER_THREE_COLUMN)),
-                    res.getString(res.getColumnIndex(ANSWER_FOUR_COLUMN)),
-                    res.getInt(res.getColumnIndex(CORRECT_INDEX_COLUMN)),
-                    res.getInt(res.getColumnIndex(DIFFICULTY_TIER)));
+            try {
+                questionToReturn = new QuestionImpl(
+                        res.getString(res.getColumnIndex(QUESTION_COLUMN)),
+                        res.getString(res.getColumnIndex(ANSWER_ONE_COLUMN)),
+                        res.getString(res.getColumnIndex(ANSWER_TWO_COLUMN)),
+                        res.getString(res.getColumnIndex(ANSWER_THREE_COLUMN)),
+                        res.getString(res.getColumnIndex(ANSWER_FOUR_COLUMN)),
+                        res.getInt(res.getColumnIndex(CORRECT_INDEX_COLUMN)),
+                        res.getInt(res.getColumnIndex(DIFFICULTY_TIER)));
+            } catch (CursorIndexOutOfBoundsException e) {
+                return null;
+            }
+
         } else {
             // Returns an empty question in case res is empty ( has not happened, yet)
             questionToReturn = new QuestionImpl("Q", "1", "2", "3", "4", 1, 2);
