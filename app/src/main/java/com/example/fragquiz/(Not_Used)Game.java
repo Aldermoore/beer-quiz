@@ -7,10 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
+/** NO LONGER USED
  * The Game class
  * Contains information about the current game, such as the current question
  */
+/*
 public class Game {
     private MyDB db;
     private Question currentQuestion;
@@ -22,6 +23,8 @@ public class Game {
     private String answerFour;
     private int correctAnswerIndex;
     private Context context;
+
+ */
 
 
 /*
@@ -96,12 +99,14 @@ public class Game {
 
 
 
-
+/*
     public Game(Context context) {
         this.context = context;
         // db = new MyDB(context);
 
     }
+
+ */
 
 /*
     public void setQuestions() {
@@ -193,49 +198,67 @@ public class Game {
      * Returns the current question stored in the object
      * @return      Question    The current question
      */
+    /*
     public Question getCurrentQuestion() {
         return currentQuestion;
     }
+
+     */
 
     /**
      * Returns the first of the four possible answers
      * @return      String      The string containing the first answer
      */
+    /*
     public String getAnswerOne() {
         return answerOne;
     }
+
+     */
 
     /**
      * Returns the second of the four possible answers
      * @return      String      The string containing the second answer
      */
+    /*
     public String getAnswerTwo() {
         return answerTwo;
     }
+
+     */
 
     /**
      * Returns the third of the four possible answers
      * @return      String      The string containing the third answer
      */
+    /*
     public String getAnswerThree() {
         return answerThree;
     }
+
+     */
 
     /**
      * Returns the fourth of the four possible answers
      * @return      String      The string containing the fourth answer
      */
+    /*
     public String getAnswerFour() {
         return answerFour;
     }
+
+     */
 
     /**
      * Returns the difficulty tier of the current question
      * Can be between [1 and 5], 1 being easiest, and 5 being hardest
      * @return      int         The difficulty tier
      */
+    /*
     public int getCurrentTier() {return currentQuestion.getTier(); }
 
+
+     */
 
 /*
     public void nextQuestion () {
@@ -299,6 +322,7 @@ public class Game {
      *
      * @param questionObject    Question    The question to replace the existing.
      */
+    /*
     public void setQuestion(Question questionObject) {
         currentQuestion = questionObject;
         answerOne = currentQuestion.getAnswerOne();
@@ -309,4 +333,7 @@ public class Game {
         progress = currentQuestion.getTier();
         correctAnswerIndex = currentQuestion.getCorrectAnswerIndex();
     }
+
+
 }
+*/

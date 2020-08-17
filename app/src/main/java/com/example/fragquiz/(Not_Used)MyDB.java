@@ -10,11 +10,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-/**
+/** NO LONGER USED
  * The MyDB class
  * allows access to the SQLite database
  * Contains functions for retrieving questions from the database
  */
+/*
 public class MyDB {
    // private SQLiteHelper dbHelper;
 
@@ -31,11 +32,14 @@ public class MyDB {
     public static final String DIFFICULTY_TIER = "DifficultyTier";
     private Context context;
 
+ */
+
     /**
      * Constructor
      * Sets up the SQlite helper and sets up and opens the database
      * @param context
      */
+    /*
     public MyDB(Context context) {
         // dbHelper = new SQLiteHelper(context);
         this.context = context;
@@ -46,12 +50,15 @@ public class MyDB {
         database = SQLiteDatabase.openDatabase((path), null, 0);
     }
 
+     */
+
     /**
      * Returns a random Question object from the database with the specified difficulty tier
      * Since all queries are random, duplicate entries can occur for the same tier
      * @param difficulty    int     The difficulty tier can be 1-5
      * @return  Question    The Question object to return
      */
+    /*
     public Question getOneQuestionOfDifficulty(int difficulty) {
         String question = null;
         String answer1 = null;
@@ -73,7 +80,7 @@ public class MyDB {
             difficultyTier = res.getString(6);
         }
 
-         */
+     */
         /*
         System.out.println("The value of the cursor");
         System.out.println(res.toString());
@@ -85,6 +92,7 @@ public class MyDB {
         System.out.println(correctAnswer);
         System.out.println(difficultyTier);
          */
+        /*
         if( res != null && res.moveToFirst() ) {
             questionToReturn = new Question(res.getString(res.getColumnIndex(QUESTION_COLUMN)),
                     res.getString(res.getColumnIndex(ANSWER_ONE_COLUMN)),
@@ -98,10 +106,13 @@ public class MyDB {
         return questionToReturn;
     }
 
+         */
+
     /**
      * Sets up the database from the db file.
      * Is only really needed for the first launch, or if the database has been altered
      */
+    /*
     public void setupDatabase() {
         //get context by calling "this" in activity or getActivity() in fragment
         //call this if API level is lower than 17  String appDataPath = "/data/data/" + context.getPackageName() + "/databases/"
@@ -129,3 +140,5 @@ public class MyDB {
         }
     }
 }
+
+     */

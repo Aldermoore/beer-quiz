@@ -43,8 +43,6 @@ public class QuizFragment extends Fragment {
     private String answerTwoLabel;
     private String answerThreeLabel;
     private String answerFourLabel;
-    private int correctAnswerIndex;
-    private int currentTier;
 
 
 
@@ -63,10 +61,6 @@ public class QuizFragment extends Fragment {
             restoreInstanceState(savedInstanceState);
 
         }
-
-        // game.setQuestions();
-        // game.restartQuiz();
-        // game.setNewQuestion(1);
         currentQuestion = getGame().getCurrentQuestion();
     }
 
@@ -173,7 +167,6 @@ public class QuizFragment extends Fragment {
      * @param view      The fragments view
      */
     private void correctAnswer(@NonNull View view) {
-        // game.nextQuestion();
         nextQuestion();
         updateQuestion();
 
@@ -189,7 +182,6 @@ public class QuizFragment extends Fragment {
      * @param view      The fragments view
      */
     private void wrongAnswer(@NonNull View view) {
-        // game.restartQuiz();
         nextQuestion();
         updateQuestion();
 
@@ -205,21 +197,11 @@ public class QuizFragment extends Fragment {
      * @param view      The fragments view
      */
     private void finishQuiz(@NonNull View view) {
-        // game.restartQuiz();
         getGame().restartQuiz();
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_finishFragment);
     }
-
-    /*
-    private void selectQuestionOfTier(int tier) {
-        currentTier = tier;
-        Question questionToSelect = ((MainActivity) getActivity()).getNextQuestion(tier);
-        getGame().setNextQuestion();
-    }
-
-     */
 
     public void nextQuestion() {
         getGame().setNextQuestion();
@@ -237,7 +219,6 @@ public class QuizFragment extends Fragment {
         answerThreeLabel = getGame().getCurrentQuestion().getAnswerThree();
         answerFourLabel = getGame().getCurrentQuestion().getAnswerFour();
         progressLabel = ("Question nr.: " + currentQuestion.getTier());
-        correctAnswerIndex = getGame().getCurrentQuestion().getCorrectAnswerIndex();
 
     }
 
@@ -275,7 +256,6 @@ public class QuizFragment extends Fragment {
         savedInstanceState.putString("answerTwo", answerTwoLabel);
         savedInstanceState.putString("answerThree", answerThreeLabel);
         savedInstanceState.putString("answerFour", answerFourLabel);
-        savedInstanceState.putInt("correctAnswerIndex", correctAnswerIndex);
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -286,7 +266,6 @@ public class QuizFragment extends Fragment {
         answerTwoLabel = savedInstanceState.getString("answerTwo");
         answerThreeLabel = savedInstanceState.getString("answerThree");
         answerFourLabel = savedInstanceState.getString("answerFour");
-        correctAnswerIndex = savedInstanceState.getInt("correctAnswerIndex");
     }
 
 

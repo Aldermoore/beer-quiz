@@ -1,6 +1,5 @@
 package com.example.fragquiz.framework;
 
-import com.example.fragquiz.Question;
 import com.example.fragquiz.QuestionImpl;
 
 /**

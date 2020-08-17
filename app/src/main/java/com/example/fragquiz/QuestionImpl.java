@@ -2,6 +2,11 @@ package com.example.fragquiz;
 
 import com.example.fragquiz.framework.QuestionInterface;
 
+/**
+ * Default implementation of the QuestionInterface
+ * Contains getters for all field variables.
+ * All variables must ber specified upon instantiation
+ */
 public class QuestionImpl implements QuestionInterface {
     private int correctAnswerIndex;
     private String answerOne;

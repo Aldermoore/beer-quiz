@@ -11,18 +11,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
+/**
+ * The SQLiteDatabaseHandler class
+ * allows access to the SQLite database (currently only one db)
+ * Responsible for retrieving the raw query from the database
+ */
 public class SQLiteDatabaseHandler implements DataBaseHandlerInterface {
-    /**
-     * The SQLiteDatabaseHandler class
-     * allows access to the SQLite database (currently only one db)
-     * Responsible for retrieving the raw query from the database
-     */
-
 
     private SQLiteDatabase database;
-
-
     private Context context;
 
     /**
@@ -31,9 +27,7 @@ public class SQLiteDatabaseHandler implements DataBaseHandlerInterface {
      * @param context
      */
     public SQLiteDatabaseHandler(Context context) {
-        // dbHelper = new SQLiteHelper(context);
         this.context = context;
-        // database = dbHelper.getReadableDatabase();
         setupDatabase();
         String name = "alcoholdb.db";
         String path = context.getDatabasePath(name).getPath();
@@ -46,7 +40,7 @@ public class SQLiteDatabaseHandler implements DataBaseHandlerInterface {
      */
     @Override
     public void setupDatabase() {
-//get context by calling "this" in activity or getActivity() in fragment
+        //get context by calling "this" in activity or getActivity() in fragment
         //call this if API level is lower than 17
         // String appDataPath = "/data/data/" + context.getPackageName() + "/databases/"
         String appDataPath = context.getApplicationInfo().dataDir;
@@ -61,8 +55,7 @@ public class SQLiteDatabaseHandler implements DataBaseHandlerInterface {
             OutputStream outputStream = new FileOutputStream(dbFilePath);
             byte[] buffer = new byte[1024];
             int length;
-            while ((length = inputStream.read(buffer))>0)
-            {
+            while ((length = inputStream.read(buffer))>0) {
                 outputStream.write(buffer, 0, length);
             }
             outputStream.flush();
