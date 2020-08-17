@@ -1,31 +1,36 @@
-Next up:
+LEGEND
+[] Incomplete
+[-] In progress
+[X] Completed
+
+
+Backlog:
 [X] Set ~current commit as version 1, with tag etc.
 [X] create dev branch for experimental features
 [X] Create README on gitlab
 
-
-Backlog:
 [] Unit tests for all classes (if applicable)
-    [X] Game
-    [] MainActivity
-    [] AnswerFragment
-    [] FinishFragment
-    [] MyDB
-    [X] Question - not applicable ( only getter methods )
+    [X] GameImpl
     [] QuizFragment
-    [] StartFragment
-    [] WrongAnswerFragment
-    [] TierPlusOneNextQuestionStrategy
+    [] SQLite_TierPlusOneNextQuestionStrategy
+    [] SQLiteDatabaseHandler
+    [] SQLite_25QuestionsNextQuestionStrategy
 [] Integration tests for all integrations (if applicable)
-    [] MainActivity x MyDB
-    [] QuizFragment x Game
+    [] MainActivity x Game
+    [] Game x NextQuestionStrategy
     [] QuizFragment x MainActivity
-[] Add settings panel
-[] see the correct answer when wrong answer is selected (must be toggled on in the settings panel)
+    [] NextQuestionStrategy x DatabaseHandler
 
-[] New GameMode: Run through all questions ( or a set amount like 50 ), with final score at the end
-    [] Game know the number of correct and incorrect answers for the given game
-    [] retrieve an array of all questions ordered by difficulty
+[] Add settings panel
+    [] see the correct answer when wrong answer is selected (must be toggled on in the settings panel)?
+    [] Select game mode
+
+
+[-] New GameMode: Run through all questions ( or a set amount like 25 or 50 ), with final score at the end
+    [] Know the number of correct and incorrect answers for the given game
+    [X] retrieve an array of all questions ordered by difficulty
+    [-] Wrong answers does not return to the start fragment » new fragment?
+    [] Shows number of correct and incorrect when finished
 
 [] New GameMode: Answer as many questions as possible in a given time frame.
     [] Wrong answers reduce the time left,
@@ -52,5 +57,3 @@ Backlog:
 
 [] Localization ( English UI and english DB )
 
-
-Finished:
