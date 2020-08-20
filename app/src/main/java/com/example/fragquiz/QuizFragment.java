@@ -45,7 +45,7 @@ public class QuizFragment extends Fragment {
     private String answerFourLabel;
 
 
-    public GameInterface getGame() {
+    public GameImpl getGame() {
         return ((MainActivity) getActivity()).getGame();
     }
 
@@ -97,18 +97,12 @@ public class QuizFragment extends Fragment {
                     finishQuiz(view);
                 } else {
                     nextQuestion();
+                    updateQuestion();
+                    if (currentQuestion == null) {
+                        finishQuiz(view);
+                    }
                     wrongAnswer(view);
                 }
-                /*
-                if (currentQuestion.getCorrectAnswerIndex() == 1 && currentQuestion.getTier() == 5) {
-                    finishQuiz(view);
-                } else if (currentQuestion.getCorrectAnswerIndex() == 1) {
-                    correctAnswer(view);
-                } else {
-                    wrongAnswer(view);
-                }
-
-                 */
             }
         });
 
@@ -128,19 +122,12 @@ public class QuizFragment extends Fragment {
                     finishQuiz(view);
                 } else {
                     nextQuestion();
+                    updateQuestion();
+                    if (currentQuestion == null) {
+                        finishQuiz(view);
+                    }
                     wrongAnswer(view);
                 }
-
-                /*
-                if (currentQuestion.getCorrectAnswerIndex() == 2 && currentQuestion.getTier() == 5) {
-                    finishQuiz(view);
-                } else if (currentQuestion.getCorrectAnswerIndex() == 2) {
-                    correctAnswer(view);
-                } else {
-                    wrongAnswer(view);
-                }
-
-                 */
             }
         });
 
@@ -160,19 +147,12 @@ public class QuizFragment extends Fragment {
                     finishQuiz(view);
                 } else {
                     nextQuestion();
+                    updateQuestion();
+                    if (currentQuestion == null) {
+                        finishQuiz(view);
+                    }
                     wrongAnswer(view);
                 }
-
-                /*
-                if (currentQuestion.getCorrectAnswerIndex() == 3 && currentQuestion.getTier() == 5) {
-                    finishQuiz(view);
-                } else if (currentQuestion.getCorrectAnswerIndex() == 3) {
-                    correctAnswer(view);
-                } else {
-                    wrongAnswer(view);
-                }
-
-                 */
             }
         });
 
@@ -192,18 +172,12 @@ public class QuizFragment extends Fragment {
                     finishQuiz(view);
                 } else {
                     nextQuestion();
+                    updateQuestion();
+                    if (currentQuestion == null) {
+                        finishQuiz(view);
+                    }
                     wrongAnswer(view);
                 }
-                /*
-                if (currentQuestion.getCorrectAnswerIndex() == 4 && currentQuestion.getTier() == 5) {
-                    finishQuiz(view);
-                } else if (currentQuestion.getCorrectAnswerIndex() == 4) {
-                    correctAnswer(view);
-                } else {
-                    wrongAnswer(view);
-                }
-
-                 */
             }
         });
 
@@ -234,7 +208,8 @@ public class QuizFragment extends Fragment {
      * @param view      The fragments view
      */
     private void correctAnswer(@NonNull View view) {
-        // nextQuestion();
+        getGame().incrementQuestionNumber();
+        getGame().incrementCorrectlyAnsweredQuestions();
         updateQuestion();
 
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_answerFragment);
@@ -249,7 +224,7 @@ public class QuizFragment extends Fragment {
      * @param view      The fragments view
      */
     private void wrongAnswer(@NonNull View view) {
-        // nextQuestion();
+        getGame().incrementQuestionNumber();
         updateQuestion();
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_wrongAnswerFragment);
     }
@@ -285,7 +260,7 @@ public class QuizFragment extends Fragment {
             answerTwoLabel = getGame().getCurrentQuestion().getAnswerTwo();
             answerThreeLabel = getGame().getCurrentQuestion().getAnswerThree();
             answerFourLabel = getGame().getCurrentQuestion().getAnswerFour();
-            progressLabel = ("Question nr.: " + currentQuestion.getTier());
+            progressLabel = ("Question nr.: " + getGame().getQuestionNumber());
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -303,7 +278,7 @@ public class QuizFragment extends Fragment {
         questionView.setText(currentQuestion.getQuestion());
 
         progress = view.findViewById(R.id.progressTextView);
-        progress.setText(getString(R.string.progressLabel) + currentQuestion.getTier());
+        progress.setText(getString(R.string.progressLabel) + " " + getGame().getQuestionNumber());
 
         answerOne = view.findViewById(R.id.answerButtonOne);
         answerOne.setText(currentQuestion.getAnswerOne());

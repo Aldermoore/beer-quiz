@@ -26,11 +26,11 @@ Backlog:
     [X] Select game mode
 
 
-[-] New GameMode: Run through all questions ( or a set amount like 25 or 50 ), with final score at the end
-    [] Know the number of correct and incorrect answers for the given game
+[X] New GameMode: Run through all questions ( or a set amount like 25 or 50 ), with final score at the end
+    [X] Know the number of correct and incorrect answers for the given game
     [X] retrieve an array of all questions ordered by difficulty
     [X] Wrong answers does not return to the start fragment » new fragment?
-    [] Shows number of correct and incorrect when finished
+    [X] Shows number of correct and incorrect when finished
 
 [] New GameMode: Answer as many questions as possible in a given time frame.
     [] Wrong answers reduce the time left,

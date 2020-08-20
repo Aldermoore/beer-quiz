@@ -14,7 +14,7 @@ import com.example.fragquiz.framework.GameInterface;
 public class MainActivity extends AppCompatActivity {
 
     private Context context = this;
-    private GameInterface game;
+    private GameImpl game;
 
     /**
      * OnCreate set up the database handler sets the view to be the nav host,
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public GameInterface getGame() {
+    public GameImpl getGame() {
         return game;
     }
 

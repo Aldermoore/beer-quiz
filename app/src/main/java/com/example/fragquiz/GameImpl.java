@@ -11,6 +11,8 @@ import com.example.fragquiz.framework.NextQuestionStrategy;
 public class GameImpl implements GameInterface {
     private QuestionImpl currentQuestion;
     private NextQuestionStrategy nextQuestionStrategy;
+    private int correctlyAnsweredQuestions = 1;
+    private int questionNumber = 1;
 
     /**
      * Constructor
@@ -50,4 +52,19 @@ public class GameImpl implements GameInterface {
         return nextQuestionStrategy;
     }
 
+    public int getCorrectlyAnsweredQuestions() {
+        return correctlyAnsweredQuestions;
+    }
+
+    public void incrementCorrectlyAnsweredQuestions() {
+        correctlyAnsweredQuestions++;
+    }
+
+    public int getQuestionNumber() {
+        return questionNumber;
+    }
+
+    public void incrementQuestionNumber() {
+        questionNumber++;
+    }
 }

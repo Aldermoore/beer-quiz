@@ -35,9 +35,12 @@
 
     <ToggleButton
         android:id="@+id/gamemodeToggle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="128dp"
+        android:checked="false"
         android:text="ToggleButton"
         android:textOff="@string/strikeOut"
         android:textOn="@string/manyInRow"
