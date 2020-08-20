@@ -24,4 +24,9 @@ public interface GameInterface {
      * Clears the current question so that the game will restart.
      */
     public void restartQuiz();
+
+    /**
+     * Returns the NextQuestionStrategy the game uses
+     */
+    public NextQuestionStrategy getNextQuestionStrategy();
 }

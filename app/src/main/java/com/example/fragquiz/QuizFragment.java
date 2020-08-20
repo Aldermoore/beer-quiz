@@ -93,7 +93,10 @@ public class QuizFragment extends Fragment {
                     } else {
                         correctAnswer(view);
                     }
+                } else if (currentQuestion == null) {
+                    finishQuiz(view);
                 } else {
+                    nextQuestion();
                     wrongAnswer(view);
                 }
                 /*
@@ -121,7 +124,10 @@ public class QuizFragment extends Fragment {
                     } else {
                         correctAnswer(view);
                     }
+                } else if (currentQuestion == null) {
+                    finishQuiz(view);
                 } else {
+                    nextQuestion();
                     wrongAnswer(view);
                 }
 
@@ -150,9 +156,13 @@ public class QuizFragment extends Fragment {
                     } else {
                         correctAnswer(view);
                     }
+                } else if (currentQuestion == null) {
+                    finishQuiz(view);
                 } else {
+                    nextQuestion();
                     wrongAnswer(view);
                 }
+
                 /*
                 if (currentQuestion.getCorrectAnswerIndex() == 3 && currentQuestion.getTier() == 5) {
                     finishQuiz(view);
@@ -178,7 +188,10 @@ public class QuizFragment extends Fragment {
                     } else {
                         correctAnswer(view);
                     }
+                } else if (currentQuestion == null) {
+                    finishQuiz(view);
                 } else {
+                    nextQuestion();
                     wrongAnswer(view);
                 }
                 /*
@@ -238,7 +251,6 @@ public class QuizFragment extends Fragment {
     private void wrongAnswer(@NonNull View view) {
         // nextQuestion();
         updateQuestion();
-
         Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_wrongAnswerFragment);
     }
 

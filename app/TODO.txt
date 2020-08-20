@@ -9,7 +9,7 @@ Backlog:
 [X] create dev branch for experimental features
 [X] Create README on gitlab
 
-[] Unit tests for all classes (if applicable)
+[-] Unit tests for all classes (if applicable)
     [X] GameImpl
     [] QuizFragment
     [] SQLite_TierPlusOneNextQuestionStrategy
@@ -29,7 +29,7 @@ Backlog:
 [-] New GameMode: Run through all questions ( or a set amount like 25 or 50 ), with final score at the end
     [] Know the number of correct and incorrect answers for the given game
     [X] retrieve an array of all questions ordered by difficulty
-    [-] Wrong answers does not return to the start fragment » new fragment?
+    [X] Wrong answers does not return to the start fragment » new fragment?
     [] Shows number of correct and incorrect when finished
 
 [] New GameMode: Answer as many questions as possible in a given time frame.

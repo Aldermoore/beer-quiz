@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
  */
 public class WrongAnswerFragment extends Fragment {
 
+
     public WrongAnswerFragment() {
 
     }
@@ -36,11 +37,25 @@ public class WrongAnswerFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Button buttonToNext = view.findViewById(R.id.nextButton);
+        if(((MainActivity) getActivity()).getGame().getNextQuestionStrategy().getClass() == SQLite_TierPlusOneNextQStrat.class) {
+            buttonToNext.setVisibility(view.INVISIBLE);
+        }
+
+
         Button buttonToExit = view.findViewById(R.id.exitButton);
         buttonToExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_wrongAnswerFragment_to_startFragment);
+            }
+        });
+
+
+        buttonToNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
             }
         });
     }

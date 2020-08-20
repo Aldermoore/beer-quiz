@@ -45,5 +45,9 @@ public class GameImpl implements GameInterface {
         setNextQuestion();
     }
 
+    @Override
+    public NextQuestionStrategy getNextQuestionStrategy() {
+        return nextQuestionStrategy;
+    }
 
 }
