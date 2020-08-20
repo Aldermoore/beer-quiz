@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,11 +44,19 @@ public class StartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        final ToggleButton gamemodeToggle = view.findViewById(R.id.gamemodeToggle);
+
         Button buttonToQuestion = view.findViewById(R.id.startButton);
         buttonToQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).startGame(((MainActivity) ((MainActivity) getActivity()).getContext()));
+                if (gamemodeToggle.isChecked()){
+                    // Gamemode is 25 in a row
+                    ((MainActivity) getActivity()).start25InARow(((MainActivity) getActivity()).getContext());
+                } else {
+                    // gamemode is strikeout
+                    ((MainActivity) getActivity()).startStrikeout(((MainActivity) getActivity()).getContext());
+                }
                 try {
                     Navigation.findNavController(view).navigate(R.id.action_startFragment_to_quizFragment);
                 } catch (Exception e) {System.out.println(e);};

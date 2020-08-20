@@ -8,5 +8,8 @@
     <string name="wrongMessage">Forkert</string>
     <string name="FinishMessage">Tillykke, du har gennemført quizzen!</string>
     <string name="progressLabel">Spørgsmål nr.:</string>
+    <string name="choose_gamemode">Vælg en spiltilstand:</string>
+    <string name="strikeOut">Strikeout</string>
+    <string name="manyInRow">25 i rap</string>
 
 </resources>

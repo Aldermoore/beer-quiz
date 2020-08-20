@@ -21,9 +21,9 @@ Backlog:
     [] QuizFragment x MainActivity
     [] NextQuestionStrategy x DatabaseHandler
 
-[] Add settings panel
+[-] Add settings panel // currently on main screen
     [] see the correct answer when wrong answer is selected (must be toggled on in the settings panel)?
-    [] Select game mode
+    [X] Select game mode
 
 
 [-] New GameMode: Run through all questions ( or a set amount like 25 or 50 ), with final score at the end
