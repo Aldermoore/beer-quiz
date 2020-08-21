@@ -49,7 +49,7 @@ Backlog:
     [X] Completion Graphics
     [X] Artwork as backgrounds during questions
     [X] Icon
-    [] New button styles?
+    [-] New button styles?
 
 [] Implement statistics
     [] Win percent rate for game mode
