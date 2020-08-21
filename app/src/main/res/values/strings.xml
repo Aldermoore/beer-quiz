@@ -7,6 +7,11 @@
     <string name="exitButton">Tilbage til start</string>
     <string name="wrongMessage">Forkert</string>
     <string name="FinishMessage">Tillykke, du har gennemført quizzen!</string>
-    <string name="progressLabel">Spørgsmål nr.:</string>
+    <string name="progressLabel">Spørgsmål nr.: </string>
+    <string name="choose_gamemode">Vælg en spiltilstand:</string>
+    <string name="strikeOut">Strikeout</string>
+    <string name="manyInRow">25 i rap</string>
+    <string name="correctlyAnsweredMessage1">Du svarede</string>
+    <string name="correctlyAnsweredMessage2">spørgsmål korrekt!</string>
 
 </resources>

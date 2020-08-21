@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,13 +35,20 @@ public class FinishFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        TextView correctQuestions = view.findViewById(R.id.correctlyQuestionsTextView);
+        int answeredQuestions = (((MainActivity) getActivity()).getGame().getCorrectlyAnsweredQuestions());
+        correctQuestions.setText(answeredQuestions+"");
+
 
         Button buttonToExit = view.findViewById(R.id.exitButton);
         buttonToExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Navigation.findNavController(view).navigate(R.id.action_finishFragment_to_startFragment);
+                try {
+                    Navigation.findNavController(view).navigate(R.id.action_finishFragment_to_startFragment);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             }
         });
     }

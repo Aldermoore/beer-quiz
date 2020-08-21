@@ -1,42 +1,54 @@
-Next up:
-[] Set ~current commit as version 1, with tag etc.
-[] create dev branch for experimental features
-[] Create README on gitlab 
+LEGEND
+[] Incomplete
+[-] In progress
+[X] Completed
 
 
 Backlog:
-[] Unit tests for all classes (if applicable)
-    [] Game
-    [] MainActivity
-    [] AnswerFragment
-    [] FinishFragment
-    [] MyDB
-    [] Question
+[X] Set ~current commit as version 1, with tag etc.
+[X] create dev branch for experimental features
+[X] Create README on gitlab
+
+[-] Unit tests for all classes (if applicable)
+    [X] GameImpl
     [] QuizFragment
-    [] StartFragment
-    [] WrongAnswerFragment
+    [] SQLite_TierPlusOneNextQuestionStrategy
+    [] SQLiteDatabaseHandler
+    [] SQLite_25QuestionsNextQuestionStrategy
 [] Integration tests for all integrations (if applicable)
-    [] MainActivity x MyDB
-    [] QuizFragment x Game
+    [] MainActivity x Game
+    [] Game x NextQuestionStrategy
     [] QuizFragment x MainActivity
-[] Add settings panel
-[] see the correct answer when wrong answer is selected (must be toggled on in the settings panel)
+    [] NextQuestionStrategy x DatabaseHandler
 
-[] New GameMode: Run through all questions, with final score at the end
-    [] Game know the number of correct and incorrect answers for the given game
-    [] retrieve an array of all questions ordered by difficulty
+[-] Add settings panel // currently on main screen
+    [] see the correct answer when wrong answer is selected (must be toggled on in the settings panel)?
+    [X] Select game mode
 
-[] refactor so that game is the central component of the system
-    [] Compositional design?
-        [] Game interface that can implement different ways to retrieve the next question?
-    [] QuizFragment should no do anything itself, but always ask the Game Object for this
 
-[] Graphics / Artwork
-    [] Start screen graphics
-    [] Wrong answer graphics
-    [] Correct answer graphics
-    [] Completion Graphics
-    [] Artwork as backgrounds during questions
+[X] New GameMode: Run through all questions ( or a set amount like 25 or 50 ), with final score at the end
+    [X] Know the number of correct and incorrect answers for the given game
+    [X] retrieve an array of all questions ordered by difficulty
+    [X] Wrong answers does not return to the start fragment » new fragment?
+    [X] Shows number of correct and incorrect when finished
+
+[] New GameMode: Answer as many questions as possible in a given time frame.
+    [] Wrong answers reduce the time left,
+    [] Correct answers don't reduce time
+    [] Streaks give extra time.
+
+[X] refactor so that game is the central component of the system
+    [X] Compositional design?
+        [X] Game interface that can implement different ways to retrieve the next question?
+    [X] QuizFragment should no do anything itself, but always ask the Game Object for this
+
+[-] Graphics / Artwork
+    [X] Start screen graphics
+    [] Wrong answer graphics - perhaps non?
+    [X] Correct answer graphics
+    [X] Completion Graphics
+    [X] Artwork as backgrounds during questions
+    [X] Icon
     [] New button styles?
 
 [] Implement statistics
@@ -46,5 +58,3 @@ Backlog:
 
 [] Localization ( English UI and english DB )
 
-
-Finished:

@@ -1,5 +1,9 @@
 package com.example.fragquiz;
 
+/**NO LONGER USED
+ *
+ */
+/*
 public class Question {
 
     private String question;
@@ -78,4 +82,6 @@ public class Question {
     }
 
 }
+
+ */
 

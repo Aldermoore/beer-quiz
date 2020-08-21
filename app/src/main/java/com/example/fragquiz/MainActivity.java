@@ -5,15 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.example.fragquiz.framework.GameInterface;
+
 /**
  * Main activity for the Quiz app
  * Sets up the fragments and views
  */
 public class MainActivity extends AppCompatActivity {
-    // private Not_Used_SQLiteHelper db = new Not_Used_SQLiteHelper(this);
 
-    private MyDB database; // The database handler
     private Context context = this;
+    private GameImpl game;
 
     /**
      * OnCreate set up the database handler sets the view to be the nav host,
@@ -24,24 +25,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        database = new MyDB(this);
     }
 
-    /**
-     * Returns the database handler object
-     * @return  MyDB    The DB handler object
-     */
-    public MyDB getDatabase() {
-        return database;
+    public GameImpl getGame() {
+        return game;
     }
 
-    /**
-     * Returns a Question object with the specified difficulty tier
-     * The question is retireved via the database handler
-     * @param tier  int     The difficulty of the question. Can be [1-5]
-     * @return  Question    A question object with the specified difficulty tier.
-     */
-    public Question getNextQuestion(int tier) {
-        return database.getOneQuestionOfDifficulty(tier);
+    public Context getContext() {
+        return context;
+    }
+
+    public void startStrikeout(Context context) {
+        game = new GameImpl(new SQLite_TierPlusOneNextQStrat(new SQLiteDatabaseHandler(context))); // Default game style
+    }
+
+    public void start25InARow(Context context) {
+        game = new GameImpl(new SQLite_25QuestionsNextQStrat(new SQLiteDatabaseHandler(context))); // 25 questions
     }
 }
