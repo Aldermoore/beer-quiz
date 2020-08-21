@@ -211,8 +211,11 @@ public class QuizFragment extends Fragment {
         getGame().incrementQuestionNumber();
         getGame().incrementCorrectlyAnsweredQuestions();
         updateQuestion();
-
-        Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_answerFragment);
+        try {
+            Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_answerFragment);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -226,7 +229,11 @@ public class QuizFragment extends Fragment {
     private void wrongAnswer(@NonNull View view) {
         getGame().incrementQuestionNumber();
         updateQuestion();
-        Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_wrongAnswerFragment);
+        try {
+            Navigation.findNavController(view).navigate(R.id.action_quizFragment_to_wrongAnswerFragment);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**

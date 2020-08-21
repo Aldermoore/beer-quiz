@@ -42,12 +42,13 @@ Backlog:
         [X] Game interface that can implement different ways to retrieve the next question?
     [X] QuizFragment should no do anything itself, but always ask the Game Object for this
 
-[] Graphics / Artwork
-    [] Start screen graphics
-    [] Wrong answer graphics
-    [] Correct answer graphics
-    [] Completion Graphics
-    [] Artwork as backgrounds during questions
+[-] Graphics / Artwork
+    [X] Start screen graphics
+    [] Wrong answer graphics - perhaps non?
+    [X] Correct answer graphics
+    [X] Completion Graphics
+    [X] Artwork as backgrounds during questions
+    [X] Icon
     [] New button styles?
 
 [] Implement statistics

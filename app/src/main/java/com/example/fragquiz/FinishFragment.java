@@ -44,8 +44,11 @@ public class FinishFragment extends Fragment {
         buttonToExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Navigation.findNavController(view).navigate(R.id.action_finishFragment_to_startFragment);
+                try {
+                    Navigation.findNavController(view).navigate(R.id.action_finishFragment_to_startFragment);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             }
         });
     }
