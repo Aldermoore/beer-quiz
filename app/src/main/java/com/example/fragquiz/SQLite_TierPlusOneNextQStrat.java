@@ -1,5 +1,6 @@
 package com.example.fragquiz;
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 
@@ -31,6 +32,7 @@ public class SQLite_TierPlusOneNextQStrat implements NextQuestionStrategy {
      * If the input is null, the fetched questions tier is 1.
      * @return
      */
+    @SuppressLint("Range")
     @Override
     public QuestionImpl fetchNextQuestion(QuestionInterface currentQuestion) {
         QuestionImpl questionToReturn;

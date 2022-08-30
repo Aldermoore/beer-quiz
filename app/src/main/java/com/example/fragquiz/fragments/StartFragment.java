@@ -1,4 +1,4 @@
-package com.example.fragquiz;
+package com.example.fragquiz.fragments;
 
 import android.content.Context;
 
@@ -14,6 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
+
+import com.example.fragquiz.MainActivity;
+import com.example.fragquiz.R;
 
 
 public class StartFragment extends Fragment {

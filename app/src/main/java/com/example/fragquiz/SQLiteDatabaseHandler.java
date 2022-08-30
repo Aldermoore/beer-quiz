@@ -24,7 +24,7 @@ public class SQLiteDatabaseHandler implements DataBaseHandlerInterface {
     /**
      * Constructor
      * Sets up the SQlite helper and sets up and opens the database
-     * @param context
+     * @param context   the activity calling this method
      */
     public SQLiteDatabaseHandler(Context context) {
         this.context = context;

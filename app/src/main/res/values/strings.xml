@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Quizzen</string>
+    <string name="app_name">AlkoQuiz</string>
     <string name="start">Start</string>
     <string name="welcomeMessage">Den store quiz om alkohol</string>
     <string name="correctMessage">Rigtigt!</string>

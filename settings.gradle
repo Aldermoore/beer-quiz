@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='fragQuiz'
+rootProject.name='beerQuiz'

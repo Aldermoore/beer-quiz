@@ -11,14 +11,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class TestTierPlusOneQStrat {
-    SQLite_TierPlusOneNextQStrat nextQuestionStrategy;
-
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    SQLite_TierPlusOneNextQStrat nextQuestionStrategy;
 
     @Before
     public void setUp() {
-        NextQuestionStrategy nextQuestionStrategy = new SQLite_TierPlusOneNextQStrat();
+//        NextQuestionStrategy nextQuestionStrategy = new SQLite_TierPlusOneNextQStrat();
         System.setOut(new PrintStream(outContent));
     }
 

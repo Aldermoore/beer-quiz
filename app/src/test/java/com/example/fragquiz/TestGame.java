@@ -28,8 +28,8 @@ public class TestGame {
     }
 
     @Test
-    public void shouldReturnNullForCurrentQuestionAtStartUp() {
-        assertThat(game.getCurrentQuestion(), is(nullValue()));
+    public void shouldNotReturnNullForCurrentQuestionAtStartUp() {
+        assertThat(game.getCurrentQuestion(), is(not(nullValue())));
     }
 
     @Test

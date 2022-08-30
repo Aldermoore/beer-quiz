@@ -1,5 +1,6 @@
 package com.example.fragquiz;
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 
@@ -36,9 +37,10 @@ public class SQLite_25QuestionsNextQStrat implements NextQuestionStrategy {
      * arraylist and returns the first.
      * If the arraylist is already populated, the function iterates over all questions, until it
      * reaches the end.
-     * @param currentQuestion
-     * @return
+     * @param currentQuestion   The questions which has just been answered. Not used for this implementation!
+     * @return QuestionImpl     The next question to be displayed to the player
      */
+    @SuppressLint("Range")
     @Override
     public QuestionImpl fetchNextQuestion(QuestionInterface currentQuestion) {
         QuestionImpl questionToReturn = null;

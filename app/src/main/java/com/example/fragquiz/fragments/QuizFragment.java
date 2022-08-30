@@ -1,4 +1,4 @@
-package com.example.fragquiz;
+package com.example.fragquiz.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.fragquiz.GameImpl;
+import com.example.fragquiz.MainActivity;
+import com.example.fragquiz.QuestionImpl;
+import com.example.fragquiz.R;
 import com.example.fragquiz.framework.GameInterface;
 
 import java.util.Objects;

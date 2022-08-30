@@ -1,23 +1,26 @@
-package com.example.fragquiz;
+package com.example.fragquiz.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.fragquiz.R;
+
 /**
- * This fragment is used when the user has completed the quiz
- * Has navigation to start over, or return the the start screen
+ * This fragment is used when the correct answer has been selected.
+ * It current only contains the a message saying the answer was correct,
+ * and a navigation to the next question
  */
-public class FinishFragment extends Fragment {
-    public FinishFragment() {
+public class AnswerFragment extends Fragment {
+
+    public AnswerFragment() {
 
     }
 
@@ -29,26 +32,31 @@ public class FinishFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_finish, container, false);
+        return inflater.inflate(R.layout.fragment_answer, container, false);
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView correctQuestions = view.findViewById(R.id.correctlyQuestionsTextView);
-        int answeredQuestions = (((MainActivity) getActivity()).getGame().getCorrectlyAnsweredQuestions());
-        correctQuestions.setText(answeredQuestions+"");
-
+        Button buttonToNextQuestion = view.findViewById(R.id.nextButton);
+        buttonToNextQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+                // Navigation.findNavController(view).navigate(R.id.action_answerFragment_to_quizFragment);
+            }
+        });
 
         Button buttonToExit = view.findViewById(R.id.exitButton);
         buttonToExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    Navigation.findNavController(view).navigate(R.id.action_finishFragment_to_startFragment);
+                    Navigation.findNavController(view).navigate(R.id.action_answerFragment_to_startFragment);
                 } catch (Exception e) {
                     System.out.println(e);
                 }
+
             }
         });
     }
